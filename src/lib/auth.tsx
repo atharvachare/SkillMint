@@ -19,9 +19,11 @@ const MockAuthContext = createContext<{ isSignedIn: boolean, isLoaded: boolean, 
 
 export function MockClerkProvider({ children }: { children: React.ReactNode }) {
   // Check if we previously logged in during this session
-  const [isSignedIn, setIsSignedIn] = React.useState(
-    localStorage.getItem("mock_demo_login") === "true"
-  );
+  const [isSignedIn, setIsSignedIn] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsSignedIn(localStorage.getItem("mock_demo_login") === "true");
+  }, []);
 
   return (
     <MockAuthContext.Provider value={{ isSignedIn, isLoaded: true, user: isSignedIn ? mockUser : null, setIsSignedIn: setIsSignedIn as any }}>
