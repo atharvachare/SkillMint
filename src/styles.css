@@ -1,0 +1,306 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-pink: var(--neon-pink);
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Magic overrides for hardcoded tailwind classes */
+  --color-black: var(--tw-mapped-black);
+  --color-white: var(--tw-mapped-white);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* True Light Mode Colors */
+  --tw-mapped-black: #f1f5f9; /* Slate 100 - Use for backgrounds when bg-black is called */
+  --tw-mapped-white: #0f172a; /* Slate 900 - Use for text when text-white is called */
+  
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  --card: rgba(255, 255, 255, 0.8);
+  --card-foreground: #0f172a;
+
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  --primary: oklch(0.65 0.25 290);
+  --primary-foreground: #ffffff;
+
+  --secondary: #e2e8f0;
+  --secondary-foreground: #0f172a;
+
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  --accent: #e0e7ff;
+  --accent-foreground: #312e81;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(0, 0, 0, 0.1);
+  --input: #e2e8f0;
+  --ring: oklch(0.65 0.25 290);
+
+  /* Neon accents stay vibrant */
+  --neon-purple: oklch(0.60 0.28 295);
+  --neon-blue: oklch(0.63 0.23 250);
+  --neon-cyan: oklch(0.70 0.18 195);
+  --neon-pink: oklch(0.65 0.25 335);
+
+  --gradient-primary: linear-gradient(135deg, var(--neon-purple), var(--neon-blue), var(--neon-cyan));
+  --gradient-radial: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.1), transparent 60%);
+
+  --shadow-glow-purple: 0 0 40px rgba(168, 85, 247, 0.2);
+  --shadow-glow-cyan: 0 0 40px rgba(6, 182, 212, 0.2);
+  --shadow-glow-blue: 0 0 40px rgba(59, 130, 246, 0.2);
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-strong-bg: rgba(255, 255, 255, 0.9);
+  --glass-strong-border: rgba(15, 23, 42, 0.15);
+}
+
+.dark {
+  --tw-mapped-black: #000000;
+  --tw-mapped-white: #ffffff;
+  
+  --background: oklch(0.12 0.03 280);
+  --foreground: oklch(0.98 0.01 280);
+
+  --card: oklch(0.16 0.04 280 / 0.6);
+  --card-foreground: oklch(0.98 0.01 280);
+
+  --popover: oklch(0.16 0.04 280);
+  --popover-foreground: oklch(0.98 0.01 280);
+
+  --primary: oklch(0.65 0.25 290);
+  --primary-foreground: oklch(0.99 0.005 280);
+
+  --secondary: oklch(0.22 0.05 280);
+  --secondary-foreground: oklch(0.98 0.01 280);
+
+  --muted: oklch(0.2 0.04 280);
+  --muted-foreground: oklch(0.7 0.04 280);
+
+  --accent: oklch(0.7 0.2 220);
+  --accent-foreground: oklch(0.12 0.03 280);
+
+  --destructive: oklch(0.65 0.25 25);
+  --destructive-foreground: oklch(0.98 0.01 280);
+
+  --border: oklch(0.3 0.05 280 / 0.5);
+  --input: oklch(0.22 0.05 280);
+  --ring: oklch(0.65 0.25 290);
+
+  --neon-purple: oklch(0.65 0.28 295);
+  --neon-blue: oklch(0.68 0.23 250);
+  --neon-cyan: oklch(0.85 0.18 195);
+  --neon-pink: oklch(0.75 0.25 335);
+
+  --gradient-primary: linear-gradient(135deg, oklch(0.65 0.28 295), oklch(0.68 0.23 250), oklch(0.85 0.18 195));
+  --gradient-radial: radial-gradient(circle at 50% 0%, oklch(0.65 0.28 295 / 0.4), transparent 60%);
+
+  --shadow-glow-purple: 0 0 40px oklch(0.65 0.28 295 / 0.5), 0 0 80px oklch(0.65 0.28 295 / 0.25);
+  --shadow-glow-cyan: 0 0 40px oklch(0.85 0.18 195 / 0.5), 0 0 80px oklch(0.85 0.18 195 / 0.25);
+  --shadow-glow-blue: 0 0 40px oklch(0.68 0.23 250 / 0.5);
+
+  --glass-bg: oklch(0.18 0.04 280 / 0.4);
+  --glass-border: oklch(1 0 0 / 0.08);
+  --glass-strong-bg: oklch(0.16 0.04 280 / 0.7);
+  --glass-strong-border: oklch(1 0 0 / 0.1);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { 
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, oklch(0.65 0.28 295 / 0.3), transparent),
+      radial-gradient(ellipse 60% 50% at 80% 50%, oklch(0.68 0.23 250 / 0.15), transparent),
+      radial-gradient(ellipse 60% 50% at 20% 80%, oklch(0.85 0.18 195 / 0.12), transparent);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-animated {
+    background: linear-gradient(120deg, oklch(0.85 0.18 195), oklch(0.65 0.28 295), oklch(0.72 0.27 340), oklch(0.68 0.23 250), oklch(0.85 0.18 195));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 8s ease infinite;
+  }
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+  .glass-strong {
+    background: var(--glass-strong-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-strong-border);
+  }
+  .neon-border {
+    position: relative;
+    background: oklch(0.16 0.04 280 / 0.5);
+  }
+  .neon-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .glow-purple { box-shadow: var(--shadow-glow-purple); }
+  .glow-cyan { box-shadow: var(--shadow-glow-cyan); }
+  .glow-blue { box-shadow: var(--shadow-glow-blue); }
+  .grid-bg {
+    background-image:
+      linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px oklch(0.65 0.28 295 / 0.5); }
+  50% { box-shadow: 0 0 40px oklch(0.65 0.28 295 / 0.8), 0 0 80px oklch(0.85 0.18 195 / 0.4); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* Clerk Auth UI overrides for dark mode */
+.cl-card {
+  background: oklch(0.12 0.03 280) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.cl-socialButtonsBlockButton {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  transition: all 0.2s ease !important;
+}
+
+.cl-socialButtonsBlockButton:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.cl-socialButtonsBlockButtonText, .cl-headerTitle, .cl-headerSubtitle, .cl-dividerText, .cl-formFieldLabel {
+  color: white !important;
+}
+
+.cl-internal-b3al4t, .cl-internal-wkkub3 {
+  color: white !important;
+}
+
+/* User Button Popover */
+.cl-userButtonPopoverCard {
+  background: #111111 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.9) !important;
+}
+
+[class*="cl-userButtonPopoverActionButton"] {
+  color: white !important;
+  transition: all 0.2s ease !important;
+}
+
+[class*="cl-userButtonPopoverActionButton"]:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+[class*="cl-userButtonPopoverActionButtonText"] {
+  color: white !important;
+}
+
+[class*="cl-userButtonPopoverActionButtonIcon"] {
+  color: white !important;
+  fill: currentColor !important;
+}
+
+[class*="cl-userButtonPopoverActionButton__signOut"],
+[class*="cl-userButtonPopoverActionButton__signOut"] * {
+  color: #f87171 !important;
+}
+
+[class*="cl-userButtonPopoverActionButton__signOut"]:hover {
+  background: rgba(248, 113, 113, 0.1) !important;
+}
