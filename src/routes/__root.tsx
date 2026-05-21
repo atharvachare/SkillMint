@@ -11,7 +11,10 @@ import {
 import { AuthProvider } from "@/lib/auth";
 import appCss from "../styles.css?url";
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const RAW_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const DUMMY_KEY = "pk_test_d2VsY29tZWQtc3VuZmlzaC02MC5jbGVyay5hY2NvdW50cy5kZXYk";
+const PUBLISHABLE_KEY = (!RAW_KEY || RAW_KEY === DUMMY_KEY) ? "" : RAW_KEY;
+
 
 
 function NotFoundComponent() {

@@ -2,7 +2,10 @@ import * as ClerkReact from "@clerk/clerk-react";
 import React, { createContext, useContext, useState, useRef, useEffect } from "react";
 import { LogOut, User, Wallet, Settings } from "lucide-react";
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const RAW_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const DUMMY_KEY = "pk_test_d2VsY29tZWQtc3VuZmlzaC02MC5jbGVyay5hY2NvdW50cy5kZXYk";
+const PUBLISHABLE_KEY = (!RAW_KEY || RAW_KEY === DUMMY_KEY) ? "" : RAW_KEY;
+
 
 // Local implementations
 const mockUser = {
